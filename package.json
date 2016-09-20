@@ -1,0 +1,27 @@
+{
+  "name": "nginx-rtmp-redis-agent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://lishen-kingsoft@github.com/lishen-kingsoft/nginx-rtmp-redis-agent.git"
+  },
+  "keywords": [
+    "redis"
+  ],
+  "author": "lishen",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/lishen-kingsoft/nginx-rtmp-redis-agent/issues"
+  },
+  "homepage": "https://github.com/lishen-kingsoft/nginx-rtmp-redis-agent#readme",
+  "dependencies": {
+    "q": "^1.4.1",
+    "thunk-redis": "^1.7.1",
+    "winston": "^2.2.0"
+  }
+}
