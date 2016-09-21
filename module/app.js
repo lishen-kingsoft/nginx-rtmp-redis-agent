@@ -49,16 +49,16 @@ module.exports = {
                 var m3u8Key = params.bucket + '/' + m3u8Paths[m3u8Paths.length - 1];
                 var tsPaths = params.tsPath.split(path.sep);
                 var tsKey = params.bucket + '/' + tsPaths[tsPaths.length - 1];
-                getFileContent(params.m3u8Path).then(function (fileContent) {
-					logger.debug('m3u8 key is: ', m3u8Key);
-					logger.debug('m3u8 size is: ', fileContent.length);
-                    return redisClient.setex(m3u8Key, 60, fileContent);
-                }).then(function () {
-                    return getFileContent(params.tsPath);
-                }).then(function (fileContent) {
+                getFileContent(params.tsPaths).then(function (fileContent) {
 					logger.debug('ts key is: ', tsKey);
 					logger.debug('ts size is: ', fileContent.length);
                     return redisClient.setex(tsKey, 60, fileContent);
+                }).then(function () {
+                    return getFileContent(params.m3u8Paths);
+                }).then(function (fileContent) {
+					logger.debug('m3u8 key is: ', m3u8Key);
+					logger.debug('m3u8 size is: ', fileContent.length);
+                    return redisClient.setex(m3u8Key, 60, fileContent);
                 }).then(function () {
 					var endTime = new Date().getTime();
 					logger.info('set redis successful, with time %dms', endTime - startTime);
