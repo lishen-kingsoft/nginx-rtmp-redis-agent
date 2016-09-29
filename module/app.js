@@ -80,7 +80,9 @@ module.exports = {
                     redisClient.get(redisKey).then(function (value) {
                         if (value) {
                             logger.debug('get file size is: ', value.length);
-                            response.writeHead(200);
+                            response.writeHead(200, {
+                                "Access-Control-Allow-Origin": "*"
+                            });
                             if (redisKey.endsWith('.ts')) {
                                 response.write(new Buffer(value, 'base64'));
                             } else {
